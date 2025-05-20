@@ -112,11 +112,22 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+.navber {
+  position: relative;
+}
+
+.navber::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  transition: 300ms ease-in;
+  background-color: red;
+  height: 2px;
+}
+
+.navber:hover::after {
+  width: 100%;
 }

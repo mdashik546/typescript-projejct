@@ -1,4 +1,3 @@
-import { TableAction } from "@/(components)/table/table-action";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -9,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { NavberDailog } from "../_dialog";
+import { TableAction } from "@/components/(custom)/table/table-action";
 
 const invoices = [
   {

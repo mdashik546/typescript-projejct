@@ -1,8 +1,8 @@
 "use client"
 
-import { InputField } from "@/(components)/input/input"
 import type { UseFormReturn } from "react-hook-form"
 import { SelectInput } from "./select/select"
+import { InputField } from "../../input/input"
 
 
 type Option = {

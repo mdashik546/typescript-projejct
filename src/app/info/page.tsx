@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Form } from "@/components/ui/form"
-import { Button } from "@/components/ui/button"
-import { GlobalFilter } from "@/(components)/globals/filter/global"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Form } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { GlobalFilter } from "@/components/(custom)/globals/filter/global";
 
 // Define your form schema
 const formSchema = z.object({
@@ -15,7 +15,7 @@ const formSchema = z.object({
   fruit: z.string().min(1, {
     message: "Please select a fruit.",
   }),
-})
+});
 
 export default function Info() {
   // Initialize form with react-hook-form
@@ -25,7 +25,7 @@ export default function Info() {
       firstName: "",
       fruit: "",
     },
-  })
+  });
 
   // Define your filter data
   const filterData = [
@@ -44,11 +44,11 @@ export default function Info() {
         { value: "orange", name: "Orange" },
       ],
     },
-  ]
+  ];
 
   // Handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    console.log(values);
   }
 
   return (
@@ -61,5 +61,5 @@ export default function Info() {
         </form>
       </Form>
     </div>
-  )
+  );
 }

@@ -28,7 +28,7 @@ const Navber = () => {
         {data?.map((item) => (
           <li
             key={item.title}
-            className={pathname === item.link ? "text-red-500" : ""}
+            className={`${pathname === item.link ? "text-red-500" : ""} navber`}
           >
             <Link href={item?.link}> {item?.title} </Link>
           </li>

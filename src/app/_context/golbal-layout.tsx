@@ -1,5 +1,5 @@
-import Footer from "@/(components)/shared/footer/footer";
-import Navber from "@/(components)/shared/navber/naber";
+import Footer from "@/components/(custom)/shared/footer/footer";
+import Navber from "@/components/(custom)/shared/navber/naber";
 import React, { ReactNode } from "react";
 
 const GolbalLayout = ({ children }: { children: ReactNode }) => {

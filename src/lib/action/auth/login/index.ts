@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const result = await res.json();
 
-    if (res.ok && result.accessToken) {
+    if (result.accessToken) {
       // Set secure cookie
       cookies().set("token", result.accessToken, {
         httpOnly: true,
