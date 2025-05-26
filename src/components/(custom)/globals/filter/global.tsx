@@ -1,32 +1,38 @@
-"use client"
+"use client";
 
-import type { UseFormReturn } from "react-hook-form"
-import { SelectInput } from "./select/select"
-import { InputField } from "../../input/input"
-
+import type { UseFormReturn } from "react-hook-form";
+import { SelectInput } from "./select/select";
+import { InputField } from "../../input/input";
 
 type Option = {
-  value: string
-  name: string
-}
+  value: string;
+  name: string;
+};
 
 type FormElement = {
-  type: "input" | "select"
-  name: string
-  placeholder?: string
-  options?: Option[]
-}
+  type: "input" | "select";
+  name: string;
+  placeholder?: string;
+  options?: Option[];
+};
 
 type GlobalFilterProps = {
-  form: UseFormReturn<any>
-  filterData?: FormElement[]
-}
+  form: UseFormReturn<any>;
+  filterData?: FormElement[];
+};
 
 export const GlobalFilter = ({ form, filterData = [] }: GlobalFilterProps) => (
   <div className="space-y-4">
     {filterData?.map((item) => {
       if (item.type === "input") {
-        return <InputField key={item.name} form={form} name={item.name} placeholder={item.placeholder} />
+        return (
+          <InputField
+            key={item.name}
+            form={form}
+            name={item.name}
+            placeholder={item.placeholder}
+          />
+        );
       }
       if (item.type === "select") {
         return (
@@ -37,9 +43,9 @@ export const GlobalFilter = ({ form, filterData = [] }: GlobalFilterProps) => (
             options={item.options || []}
             placeholder={item.placeholder}
           />
-        )
+        );
       }
-      return null
+      return null;
     })}
   </div>
-)
+);
