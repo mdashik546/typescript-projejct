@@ -46,7 +46,7 @@ export const SelectInput = ({
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {options.map((option) => (
+              {options?.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.name}
                 </SelectItem>

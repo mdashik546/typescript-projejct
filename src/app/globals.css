@@ -117,17 +117,20 @@
   position: relative;
 }
 
+
+
 .navber::after {
   position: absolute;
   content: '';
   left: 0;
   bottom: 0;
   width: 0%;
-  transition: 300ms ease-in;
-  background-color: red;
   height: 2px;
+  background-color: red;
+  transition: width 300ms ease-in;
 }
 
-.navber:hover::after {
+.navber:hover::after,
+.navber.active::after {
   width: 100%;
 }
