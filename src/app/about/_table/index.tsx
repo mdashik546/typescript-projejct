@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -9,8 +12,9 @@ import {
 } from "@/components/ui/table";
 import { NavberDailog } from "../_dialog";
 import { TableAction } from "@/components/(custom)/table/table-action";
+import { Checkbox } from "@/components/ui/checkbox";
 
-const invoices = [
+const data = [
   {
     invoice: "INV001",
     paymentStatus: "Paid",
@@ -56,10 +60,38 @@ const invoices = [
 ];
 
 export function AboutTable() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const isAllSelected = selected.length === data.length;
+
+  const toggleSelectAll = () => {
+    if (isAllSelected) {
+      console.log(isAllSelected);
+      setSelected([]);
+    } else {
+      setSelected(data?.map((inv) => inv.invoice));
+    }
+  };
+
+  const toggleRow = (invoiceId: string) => {
+    setSelected((prevSelected) =>
+      prevSelected.includes(invoiceId)
+        ? prevSelected.filter((id) => id !== invoiceId)
+        : [...prevSelected, invoiceId]
+    );
+  };
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
+          <TableHead>
+            <Checkbox
+              checked={isAllSelected}
+              onCheckedChange={toggleSelectAll}
+              aria-label="Select all rows"
+            />
+          </TableHead>
           <TableHead className="w-[100px]">Invoice</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Method</TableHead>
@@ -68,8 +100,15 @@ export function AboutTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {invoices.map((invoice) => (
+        {data.map((invoice) => (
           <TableRow key={invoice.invoice}>
+            <TableCell>
+              <Checkbox
+                checked={selected.includes(invoice.invoice)}
+                onCheckedChange={() => toggleRow(invoice.invoice)}
+                aria-label={`Select ${invoice.invoice}`}
+              />
+            </TableCell>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
             <TableCell>{invoice.paymentMethod}</TableCell>

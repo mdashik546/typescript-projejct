@@ -1,14 +1,18 @@
+"use client";
 import Footer from "@/components/(custom)/shared/footer/footer";
 import Navber from "@/components/(custom)/shared/navber/naber";
+import { usePathname } from "next/navigation";
 import React, { ReactNode } from "react";
 
 const GolbalLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
+  const isLogin = pathname.includes("/login");
   return (
-    <>
-      <Navber />
+    <div>
+      {!isLogin && <Navber />}
       {children}
-      <Footer />
-    </>
+      {!isLogin && <Footer />}
+    </div>
   );
 };
 

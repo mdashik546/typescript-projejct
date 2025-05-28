@@ -5,6 +5,7 @@ import GolbalLayout from "./_context/golbal-layout";
 import Providers from "./_progressbar/progressbar";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "./_theme/theme-context";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -24,14 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        <TooltipProvider>
-          <Providers>
-            <GolbalLayout>
-              {children}
-              <Toaster />
-            </GolbalLayout>
-          </Providers>
-        </TooltipProvider>
+        <ThemeProvider>
+          <TooltipProvider>
+            <Providers>
+              <GolbalLayout>
+                {children}
+                <Toaster />
+              </GolbalLayout>
+            </Providers>
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
